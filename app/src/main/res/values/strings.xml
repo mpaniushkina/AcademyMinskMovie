@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Academy Minsk Movie</string>
+    <string name="film_title">Harry Potter</string>
+    <string name="released">Released:</string>
+    <string name="released_date">November 4, 2001</string>
+    <string name="movie_trailer">MOVIE TRAILER</string>
+    <string name="overview">Overview:</string>
+    <string name="film_description">Adaptation of the first of J.K. Rowling\'s popular children\'s novels about Harry
+        Potter, a boy who learns on his eleventh birthday that he is the orphaned son of two powerful wizards and
+        possesses unique magical powers of his own. He is summoned from his life as an unwanted child to become a
+        student at Hogwarts, an English boarding school for wizards. There, he meets several friends who become his
+        closest allies and help him discover the truth about his parents\' mysterious deaths.
+    </string>
+    <string name="fun_facts">Fun Facts</string>
+    <string name="fun_facts_description">Harry\'s parents James and Lily are soulmates because the patronus charm (to ward off Dementors) is a physical representation of one’s soul. Because James\' is a stag and Lily\'s is a doe they are a perfect fit together. Because Professor Snape was in love with Lily, his patronus transformed into a doe when she died</string>
+</resources>
