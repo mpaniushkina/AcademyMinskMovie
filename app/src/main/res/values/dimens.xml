@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="filmRowHeigh">108dp</dimen>
+    <dimen name="rowPadding">4dp</dimen>
+    <dimen name="filmImageWidth">90dp</dimen>
+    <dimen name="startTextMargin">10dp</dimen>
+    <dimen name="textSize">12sp</dimen>
+</resources>
