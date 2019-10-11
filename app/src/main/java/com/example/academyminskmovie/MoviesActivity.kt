@@ -2,7 +2,6 @@ package com.example.academyminskmovie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,9 +14,7 @@ class MoviesActivity : AppCompatActivity() {
 
         val movies = DataFilmList.generateFilmList()
         val adapter = MovieListAdapter(this, movies) { position ->
-            val movie = movies[position]
-            val intent = DetailsActivity.createIntent(this, movie)
-            startActivity(intent)
+            showDetailsFragment(movies, position)
         }
 
         val movieList = findViewById<RecyclerView>(R.id.rvFilmList)
@@ -25,5 +22,14 @@ class MoviesActivity : AppCompatActivity() {
         movieList.layoutManager = LinearLayoutManager(this)
 
         movieList.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+    }
+
+    private fun showDetailsFragment(movies: List<FilmList>, position: Int) {
+        val detailsFragment = ViewPager.newInstance(movies, position)
+        supportFragmentManager
+            .beginTransaction()
+            .addToBackStack(null)
+            .add(R.id.containerViewPager, detailsFragment)
+            .commit()
     }
 }

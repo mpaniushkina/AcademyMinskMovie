@@ -18,11 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
 
-            </intent-filter>
-        </activity>
+        </intent-filter>
+    </activity>
     </application>
 
 </manifest>
