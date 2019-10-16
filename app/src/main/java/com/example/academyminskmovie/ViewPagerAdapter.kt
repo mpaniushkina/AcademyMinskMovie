@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 
 class ViewPagerAdapter(fragmentManager: FragmentManager,
                        private val arrayList: List<FilmList>
-                       ): FragmentPagerAdapter(fragmentManager) {
+                       ): FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
         val movie = when {

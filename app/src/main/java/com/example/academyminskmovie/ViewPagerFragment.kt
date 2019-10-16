@@ -1,20 +1,16 @@
 package com.example.academyminskmovie
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.example.academyminskmovie.DetailsFragment.Companion.ARGS_MOVIE
 
-class ViewPager : Fragment() {
+class ViewPagerFragment : BaseFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.view_pager, container, false)
+    override fun getLayoutResId() = R.layout.view_pager
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val movies = arguments?.getParcelableArrayList<FilmList>(ARGS_MOVIE)
             ?: throw IllegalArgumentException("Missing movie argument")
         val position = arguments?.getInt(ARGS_MOVIE_POSITION) ?: 0
@@ -23,23 +19,20 @@ class ViewPager : Fragment() {
             adapter = ViewPagerAdapter(childFragmentManager, movies)
             currentItem = position
         }
-
-        return view
     }
 
     companion object {
 
-        private const val ARGS_MOVIE = "ARGS_MOVIE"
         private const val ARGS_MOVIE_POSITION = "ARGS_MOVIE_POSITION"
 
         fun newInstance(
             movie: List<FilmList>,
             position: Int
-        ): com.example.academyminskmovie.ViewPager {
-            val fragment = ViewPager()
+        ): ViewPagerFragment {
+            val fragment = ViewPagerFragment()
             val bundle = Bundle()
             bundle.run {
-                putParcelableArrayList(ARGS_MOVIE, ArrayList(movie))
+                putParcelableArrayList(DetailsFragment.ARGS_MOVIE, ArrayList(movie))
                 putInt(ARGS_MOVIE_POSITION, position)
             }
             fragment.arguments = bundle

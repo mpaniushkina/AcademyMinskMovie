@@ -11,21 +11,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_details.*
 
 
-class DetailsFragment : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
-    }
+class DetailsFragment : BaseFragment() {
 
     companion object {
 
-        private const val ARGS_MOVIE = "ARGS_MOVIE"
+        public const val ARGS_MOVIE = "ARGS_MOVIE"
 
         fun newInstance(movie: FilmList): DetailsFragment {
             val fragment = DetailsFragment()
@@ -36,12 +29,14 @@ class DetailsFragment : Fragment() {
         }
     }
 
+    override fun getLayoutResId() = R.layout.fragment_details
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getParcelable<FilmList>(ARGS_MOVIE)?.run {
 
-            val banner = view.findViewById<ImageView>(R.id.imgBanner)
-            Picasso.get().load(filmBanner).into(banner)
+            Picasso.get().load(filmBanner).into(imgBanner)
+
             val preview = view.findViewById<ImageView>(R.id.imgPreview)
             Picasso.get().load(filmImage).into(preview)
             view.findViewById<TextView>(R.id.tvFilmTitle).text = filmTitle
