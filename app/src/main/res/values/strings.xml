@@ -13,4 +13,28 @@
     </string>
     <string name="fun_facts">Fun Facts</string>
     <string name="fun_facts_description">Harry\'s parents James and Lily are soulmates because the patronus charm (to ward off Dementors) is a physical representation of one’s soul. Because James\' is a stag and Lily\'s is a doe they are a perfect fit together. Because Professor Snape was in love with Lily, his patronus transformed into a doe when she died</string>
+    <string name="coroutines_activity">Coroutines Activity</string>
+    <string name="thread_handler_activity">Thread Handler Activity</string>
+    <string name="create">Create</string>
+    <string name="start">Start</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="coroutine_create">Create</string>
+    <string name="coroutine_start">Start</string>
+    <string name="coroutine_stop">Stop</string>
+    <string name="fragment_coroutine_title">Coroutines activity</string>
+    <string name="fragment_handler_exe_title">This is Thread Handler Activity</string>
+
+    <string name="msg_oncreate">Coroutine created</string>
+    <string name="msg_onstart">Coroutine Started</string>
+    <string name="msg_oncancel">Coroutine cancelled</string>
+    <string name="msg_should_create_task">Must click \"create\" task first</string>
+    <string name="msg_thread_oncreate">Thread Task created</string>
+    <string name="msg_thread_onstart">Thread Task Started</string>
+    <string name="msg_thread_oncancel">Thread Task cancelled</string>
+    <string name="msg_preexecute">Pre execute run</string>
+    <string name="msg_postexecute">Post execute run</string>
+
+    <string name="done">Done!</string>
+    <string name="task_created">Job created</string>
 </resources>

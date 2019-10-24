@@ -5,4 +5,5 @@
     <dimen name="filmImageWidth">90dp</dimen>
     <dimen name="startTextMargin">10dp</dimen>
     <dimen name="textSize">12sp</dimen>
+    <dimen name="counterSize">40sp</dimen>
 </resources>
