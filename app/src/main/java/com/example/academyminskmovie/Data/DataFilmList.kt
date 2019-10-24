@@ -1,4 +1,4 @@
-package com.example.academyminskmovie
+package com.example.academyminskmovie.Data
 
 object DataFilmList {
 

@@ -6,4 +6,6 @@
     <color name="textColor">#000</color>
     <color name="grey">#999595</color>
     <color name="white">#FFFFFF</color>
+    <color name="counterTextColor">#1F3CC9</color>
+    <color name="toolbar">#102069</color>
 </resources>

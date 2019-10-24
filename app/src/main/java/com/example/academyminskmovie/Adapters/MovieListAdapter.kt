@@ -1,18 +1,15 @@
-package com.example.academyminskmovie
+package com.example.academyminskmovie.Adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ExpandableListView
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.os.persistableBundleOf
 import androidx.recyclerview.widget.RecyclerView
+import com.example.academyminskmovie.Data.FilmList
+import com.example.academyminskmovie.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.movie_row.view.*
 
 class MovieListAdapter(
     context: Context,
@@ -25,7 +22,13 @@ class MovieListAdapter(
     private fun getItem(position: Int): FilmList = movieList[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(inflater.inflate(R.layout.movie_row, parent, false), clickListener)
+        return ViewHolder(
+            inflater.inflate(
+                R.layout.movie_row,
+                parent,
+                false
+            ), clickListener
+        )
     }
 
     override fun getItemCount(): Int = movieList.size

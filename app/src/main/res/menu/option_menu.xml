@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/coroutinesMenu"
+        android:title="@string/coroutines_activity" />
+    <item android:id="@+id/threadsMenu"
+        android:title="@string/thread_handler_activity" />
+
+</menu>

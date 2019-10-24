@@ -1,9 +1,12 @@
-package com.example.academyminskmovie
+package com.example.academyminskmovie.Fragments
 
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
-import com.example.academyminskmovie.DetailsFragment.Companion.ARGS_MOVIE
+import com.example.academyminskmovie.Adapters.ViewPagerAdapter
+import com.example.academyminskmovie.Data.FilmList
+import com.example.academyminskmovie.Fragments.DetailsFragment.Companion.ARGS_MOVIE
+import com.example.academyminskmovie.R
 
 class ViewPagerFragment : BaseFragment() {
 
@@ -16,7 +19,10 @@ class ViewPagerFragment : BaseFragment() {
         val position = arguments?.getInt(ARGS_MOVIE_POSITION) ?: 0
 
         view.findViewById<ViewPager>(R.id.viewPager).run {
-            adapter = ViewPagerAdapter(childFragmentManager, movies)
+            adapter = ViewPagerAdapter(
+                childFragmentManager,
+                movies
+            )
             currentItem = position
         }
     }
@@ -32,7 +38,7 @@ class ViewPagerFragment : BaseFragment() {
             val fragment = ViewPagerFragment()
             val bundle = Bundle()
             bundle.run {
-                putParcelableArrayList(DetailsFragment.ARGS_MOVIE, ArrayList(movie))
+                putParcelableArrayList(ARGS_MOVIE, ArrayList(movie))
                 putInt(ARGS_MOVIE_POSITION, position)
             }
             fragment.arguments = bundle

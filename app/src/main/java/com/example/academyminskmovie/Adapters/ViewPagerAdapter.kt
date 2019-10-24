@@ -1,8 +1,10 @@
-package com.example.academyminskmovie
+package com.example.academyminskmovie.Adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.academyminskmovie.Fragments.DetailsFragment
+import com.example.academyminskmovie.Data.FilmList
 
 class ViewPagerAdapter(fragmentManager: FragmentManager,
                        private val arrayList: List<FilmList>
