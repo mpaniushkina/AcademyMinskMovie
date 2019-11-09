@@ -12,7 +12,6 @@ import com.example.academyminskmovie.Adapters.MovieListAdapter
 import com.example.academyminskmovie.Threads.CoroutinesActivity
 import com.example.academyminskmovie.Data.DataFilmList
 import com.example.academyminskmovie.Data.FilmList
-import com.example.academyminskmovie.Threads.ThreadHandlerActivity
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 class MoviesFragment : BaseFragment() {
@@ -38,9 +37,7 @@ class MoviesFragment : BaseFragment() {
                 layoutManager = LinearLayoutManager(it)
                 addItemDecoration(DividerItemDecoration(it, DividerItemDecoration.VERTICAL))
             }
-
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -51,13 +48,12 @@ class MoviesFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             com.example.academyminskmovie.R.id.coroutinesMenu -> {
-                //replaceFragment(TaskFragment())
-                val intent = Intent(activity, CoroutinesActivity::class.java)
+                val intent = Intent(activity, CoroutinesActivity::class.java).apply { putExtra("extra_type", 1) }
                 startActivity(intent)
                 return true
             }
             com.example.academyminskmovie.R.id.threadsMenu -> {
-                val intent = Intent(activity, ThreadHandlerActivity::class.java)
+                val intent = Intent(activity, CoroutinesActivity::class.java).apply { putExtra("extra_type", 2) }
                 startActivity(intent)
                 return true
             }

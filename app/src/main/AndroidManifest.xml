@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Threads.ThreadHandlerActivity"></activity>
         <activity android:name=".Threads.CoroutinesActivity" />
-        <activity android:name=".Threads.TaskFragment" />
         <activity android:name=".Activity.MoviesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

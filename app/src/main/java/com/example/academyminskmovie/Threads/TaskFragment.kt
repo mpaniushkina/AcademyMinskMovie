@@ -2,49 +2,26 @@ package com.example.academyminskmovie.Threads
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.academyminskmovie.Fragments.BaseFragment
 import com.example.academyminskmovie.R
 import kotlinx.android.synthetic.main.fragment_counter.*
 
 private const val FRAGMENT_TYPE = "fragment_type"
 
-class TaskFragment : BaseFragment() {
+class TaskFragment : BaseFragment(), TaskEventsContract.Lifecycle,
+    TaskEventsContract.Operationable {
+
+    private lateinit var viewModel: TaskViewModel
 
     override fun getLayoutResId() = R.layout.fragment_counter
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        btnCreate.setOnClickListener {
-//           counter()
-//        }
-//        btnCancel.setOnClickListener{
-//        }
-
-//    }
-
-//    private fun counter() {
-//        val timer = object: CountDownTimer(10000, 500) {
-//            override fun onTick(millisUntilFinished: Long) {
-//                tvCounter.setText("" + millisUntilFinished / 1000)
-//            }
-//
-//            override fun onFinish() {
-//                tvCounter.setText("Done!")
-//            }
-//        }
-//        timer.start()
-//    }
-
 
     companion object {
         fun newInstance(fragmentTitle: String): TaskFragment {
             val fragment = TaskFragment()
 
-            val bundle = Bundle(1).apply {
+            val bundle = Bundle().apply {
                 putString(FRAGMENT_TYPE, fragmentTitle)
             }
             fragment.arguments = bundle
@@ -53,15 +30,13 @@ class TaskFragment : BaseFragment() {
         }
     }
 
-    private var listener: TaskEventsContract.Operationable? = null
+//    override fun onSaveInstanceState(outState: Bundle) {
+//
+//        super.onSaveInstanceState(outState)
+//        outState.putString(FRAGMENT_TYPE, tvCounter.text.toString())
+//    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_counter, container, false)
-    }
+    private var listener: TaskEventsContract.Operationable? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -74,9 +49,14 @@ class TaskFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        btnCreate.setOnClickListener { listener?.createTask() }
-        btnStart.setOnClickListener { listener?.startTask() }
-        btnCancel.setOnClickListener { listener?.cancelTask() }
+        viewModel = ViewModelProviders
+            .of(this.activity!!, TaskViewModelFactory(this.context!!))
+            .get(TaskViewModel::class.java)
+        viewModel.text.observe(this, Observer { text -> this.updateFragmentText(text) })
+
+        btnCreate.setOnClickListener { viewModel.createTask(arguments?.getInt("extra_type", 0) ?: 0) }
+        btnStart.setOnClickListener { viewModel.startTask() }
+        btnCancel.setOnClickListener { viewModel.cancelTask() }
 
         //UNPACK OUR DATA FROM OUR BUNDLE
         val fragmentText = this.arguments?.getString(FRAGMENT_TYPE)
@@ -90,5 +70,38 @@ class TaskFragment : BaseFragment() {
 
     fun updateFragmentText(text: String) {
         tvCounter.text = text
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.cancelTask()
+    }
+
+    override fun createTask(type: Int) {
+        viewModel.createTask(type)
+    }
+
+    override fun startTask() {
+        viewModel.startTask()
+    }
+
+    override fun cancelTask() {
+        viewModel.cancelTask()
+    }
+
+    override fun onProgressUpdate(progress: Int) {
+        this.updateFragmentText(progress.toString())
+    }
+
+    override fun onPreExecute() {
+        this.updateFragmentText(getString(R.string.task_created))
+    }
+
+    override fun onPostExecute() {
+        this.updateFragmentText(getString(R.string.done))
+    }
+
+    override fun onCancel() {
+        //Toast.makeText(this, getString(R.string.msg_oncancel), Toast.LENGTH_SHORT).show()
     }
 }

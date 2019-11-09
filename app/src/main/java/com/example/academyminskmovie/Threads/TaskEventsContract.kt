@@ -3,7 +3,7 @@ package com.example.academyminskmovie.Threads
 interface TaskEventsContract {
 
     interface Operationable{
-        fun createTask()
+        fun createTask(type: Int)
         fun startTask()
         fun cancelTask()
     }

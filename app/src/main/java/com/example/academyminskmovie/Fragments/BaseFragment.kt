@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.academyminskmovie.Interfaces.IFragmentListener
-import com.example.academyminskmovie.R
 import java.lang.Exception
 
 abstract class BaseFragment : Fragment(),

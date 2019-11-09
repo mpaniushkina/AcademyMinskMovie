@@ -3,19 +3,41 @@ package com.example.academyminskmovie.Threads
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import com.example.academyminskmovie.R
 
-class SimpleAsyncTask (private val listener: TaskEventsContract.Lifecycle) {
+class SimpleAsyncTask(listener: TaskEventsContract.Lifecycle) : BaseTask<Thread>(listener) {
+
+    override fun createTask(): Thread {
+        return object : Thread("Handler_executor_thread") {
+            override fun run() {
+                doInBackground()
+                runOnUiThread(Runnable { onPostExecute() })
+            }
+        }
+    }
 
     @Volatile
     var isCancelled = false
         private set
-    private var mBackgroundThread: Thread? = null
 
-    /**
-     * Runs on the UI thread before [.doInBackground].
-     */
-    private fun onPreExecute() {
-        listener.onPreExecute()
+    override fun getCreatedTextResId() = R.string.msg_thread_oncreate
+
+    override fun getStartedTextResId() = R.string.msg_thread_onstart
+
+    override fun getCanceledTextResId() = R.string.msg_thread_oncancel
+
+    override fun start(): Boolean? {
+        runOnUiThread(Runnable {
+            onPreExecute()
+            task = createTask()
+            task?.start()
+        })
+        return true
+    }
+
+    override fun cancel() {
+        isCancelled = true
+        task?.interrupt()
     }
 
     /**
@@ -33,42 +55,11 @@ class SimpleAsyncTask (private val listener: TaskEventsContract.Lifecycle) {
         }
     }
 
-    /**
-     * Runs on the UI thread after [.doInBackground]
-     */
-    private fun onPostExecute() {
-        listener.onPostExecute()
-    }
-
-    private fun onProgressUpdate(progress: Int) {
-        listener.onProgressUpdate(progress)
-    }
-
-    fun execute() {
-        runOnUiThread(Runnable {
-            onPreExecute()
-            mBackgroundThread = object : Thread("Handler_executor_thread") {
-                override fun run() {
-                    doInBackground()
-                    runOnUiThread(Runnable { onPostExecute() })
-                }
-            }
-            mBackgroundThread!!.start()
-        })
-    }
-
     private fun runOnUiThread(runnable: Runnable) {
         Handler(Looper.getMainLooper()).post(runnable)
     }
 
     private fun publishProgress(progress: Int) {
         runOnUiThread(Runnable { onProgressUpdate(progress) })
-    }
-
-    fun cancel() {
-        isCancelled = true
-        if (mBackgroundThread != null) {
-            mBackgroundThread!!.interrupt()
-        }
     }
 }
