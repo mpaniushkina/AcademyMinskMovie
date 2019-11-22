@@ -1,8 +1,8 @@
 package com.example.academyminskmovie
 
 import android.util.Log
-import com.example.academyminskmovie.Threads.BaseTask
-import com.example.academyminskmovie.Threads.TaskEventsContract
+import com.example.academyminskmovie.threads.BaseTask
+import com.example.academyminskmovie.threads.TaskEventsContract
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

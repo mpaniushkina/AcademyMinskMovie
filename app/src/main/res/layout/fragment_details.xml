@@ -5,15 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.DetailsFragment">
+    tools:context=".fragments.filmdetails.DetailsFragment">
 
         <ImageView
             android:id="@+id/imgBanner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:adjustViewBounds="true"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/hp_banner_1" />
+            app:layout_constraintHeight_percent="0.3"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/hp_banner_1"/>
 
         <ScrollView
             android:id="@+id/scrollViewDetails"

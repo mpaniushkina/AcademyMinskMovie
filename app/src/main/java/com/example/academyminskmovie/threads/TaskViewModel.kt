@@ -1,10 +1,11 @@
-package com.example.academyminskmovie.Threads
+package com.example.academyminskmovie.threads
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.academyminskmovie.CoroutineTask
 import com.example.academyminskmovie.R
+import com.example.academyminskmovie.StringsProvider
 
 class TaskViewModel(val stringsProvider: StringsProvider) : ViewModel(), TaskEventsContract.Operationable {
 

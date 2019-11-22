@@ -1,4 +1,4 @@
-package com.example.academyminskmovie.Threads
+package com.example.academyminskmovie.threads
 
 import android.os.Handler
 import android.os.Looper

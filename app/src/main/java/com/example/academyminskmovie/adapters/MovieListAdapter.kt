@@ -1,4 +1,4 @@
-package com.example.academyminskmovie.Adapters
+package com.example.academyminskmovie.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.academyminskmovie.Data.FilmList
+import coil.api.load
+import com.example.academyminskmovie.data.FilmList
 import com.example.academyminskmovie.R
-import com.squareup.picasso.Picasso
 
 class MovieListAdapter(
     context: Context,
-    private val movieList: List<FilmList>,
-    private val clickListener: (position: Int) -> Unit
+    var movies: List<FilmList>,
+    private val clickListener: ( movies: List<FilmList>, position: Int) -> Unit
 ) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private fun getItem(position: Int): FilmList = movieList[position]
+    private fun getItem(position: Int): FilmList = movies[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -27,17 +27,17 @@ class MovieListAdapter(
                 R.layout.movie_row,
                 parent,
                 false
-            ), clickListener
-        )
+            )//, clickListener
+        ) { position -> clickListener(movies, position) }
     }
 
-    override fun getItemCount(): Int = movieList.size
+    override fun getItemCount(): Int = movies.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(itemView: View, listener: (position: Int) -> Unit)
+    class ViewHolder(itemView: View, listener: ( position: Int) -> Unit)
         : RecyclerView.ViewHolder(itemView) {
 
         private val filmImage: ImageView = itemView.findViewById(R.id.filmImage)
@@ -54,7 +54,8 @@ class MovieListAdapter(
         }
 
         fun bind(moviesList: FilmList) {
-            Picasso.get().load(moviesList.filmImage).into(filmImage)
+            filmImage.load(moviesList.filmImageUrl)
+            //Picasso.get().load(moviesList.filmImage).into(filmImage)
             filmTitle.text = moviesList.filmTitle
             filmOverview.text = moviesList.filmOverview
         }

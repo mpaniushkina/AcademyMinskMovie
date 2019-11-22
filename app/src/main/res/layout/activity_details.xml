@@ -13,7 +13,7 @@
 
         <fragment
             android:id="@+id/fragmentMovie"
-            android:name="com.example.academyminskmovie.Fragments.DetailsFragment"
+            android:name="com.example.academyminskmovie.fragments.filmdetails.DetailsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

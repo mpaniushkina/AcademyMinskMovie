@@ -1,10 +1,10 @@
-package com.example.academyminskmovie.Threads
+package com.example.academyminskmovie.threads
 
 import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.academyminskmovie.Fragments.BaseFragment
+import com.example.academyminskmovie.fragments.BaseFragment
 import com.example.academyminskmovie.R
 import kotlinx.android.synthetic.main.fragment_counter.*
 

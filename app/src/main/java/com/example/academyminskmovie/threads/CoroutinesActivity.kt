@@ -1,8 +1,8 @@
-package com.example.academyminskmovie.Threads
+package com.example.academyminskmovie.threads
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.academyminskmovie.Fragments.BaseFragment
+import com.example.academyminskmovie.fragments.BaseFragment
 import com.example.academyminskmovie.R
 
 class CoroutinesActivity : AppCompatActivity() {

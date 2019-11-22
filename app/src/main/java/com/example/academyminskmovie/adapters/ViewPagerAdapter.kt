@@ -1,14 +1,14 @@
-package com.example.academyminskmovie.Adapters
+package com.example.academyminskmovie.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import com.example.academyminskmovie.Fragments.DetailsFragment
-import com.example.academyminskmovie.Data.FilmList
+import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.academyminskmovie.fragments.filmdetails.DetailsFragment
+import com.example.academyminskmovie.data.FilmList
 
 class ViewPagerAdapter(fragmentManager: FragmentManager,
                        private val arrayList: List<FilmList>
-                       ): FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+                       ): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
         val movie = when {

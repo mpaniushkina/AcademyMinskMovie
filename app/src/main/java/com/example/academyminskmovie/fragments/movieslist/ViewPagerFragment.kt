@@ -1,12 +1,14 @@
-package com.example.academyminskmovie.Fragments
+package com.example.academyminskmovie.fragments.movieslist
 
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
-import com.example.academyminskmovie.Adapters.ViewPagerAdapter
-import com.example.academyminskmovie.Data.FilmList
-import com.example.academyminskmovie.Fragments.DetailsFragment.Companion.ARGS_MOVIE
+import com.example.academyminskmovie.adapters.ViewPagerAdapter
+import com.example.academyminskmovie.data.FilmList
+import com.example.academyminskmovie.fragments.BaseFragment
+import com.example.academyminskmovie.fragments.filmdetails.DetailsFragment.Companion.ARGS_MOVIE
 import com.example.academyminskmovie.R
+import java.util.ArrayList
 
 class ViewPagerFragment : BaseFragment() {
 
@@ -44,5 +46,6 @@ class ViewPagerFragment : BaseFragment() {
             fragment.arguments = bundle
             return fragment
         }
+
     }
 }

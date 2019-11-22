@@ -1,4 +1,4 @@
-package com.example.academyminskmovie.Fragments
+package com.example.academyminskmovie.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.example.academyminskmovie.Interfaces.IFragmentListener
+import com.example.academyminskmovie.interfaces.IFragmentListener
 import java.lang.Exception
 
 abstract class BaseFragment : Fragment(),

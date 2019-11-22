@@ -1,8 +1,9 @@
-package com.example.academyminskmovie.Threads
+package com.example.academyminskmovie.threads
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.academyminskmovie.StringsProvider
 import java.lang.IllegalArgumentException
 
 class TaskViewModelFactory (private val context: Context) : ViewModelProvider.Factory {

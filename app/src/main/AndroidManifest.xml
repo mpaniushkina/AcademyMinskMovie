@@ -12,19 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Threads.CoroutinesActivity" />
-        <activity android:name=".Activity.MoviesActivity">
+        <activity android:name=".threads.CoroutinesActivity" />
+        <activity android:name=".activity.MoviesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".DetailsActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+
     </application>
 
 </manifest>
